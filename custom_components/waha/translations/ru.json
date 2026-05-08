@@ -1,0 +1,61 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "WAHA (WhatsApp HTTP API)",
+        "description": "Подключитесь к вашему серверу WAHA. После сохранения интеграция зарегистрирует вебхук — укажите его URL в настройках сессии WAHA.",
+        "data": {
+          "base_url": "URL сервера WAHA",
+          "api_key": "API-ключ (X-Api-Key)",
+          "session": "Имя сессии WAHA"
+        },
+        "data_description": {
+          "base_url": "Например: http://192.168.1.10:3000 — без завершающего слэша.",
+          "api_key": "Требуется, если на сервере WAHA задана переменная WHATSAPP_API_KEY.",
+          "session": "По умолчанию «default». Должно совпадать с сессией, запущенной в WAHA."
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Этот URL WAHA и сессия уже настроены."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "WAHA — обработка входящих сообщений",
+        "description": "Настройка обработки входящих сообщений WhatsApp. Каждое сообщение в любом случае генерирует событие `waha_message_received` — параметры ниже определяют дополнительные действия.",
+        "data": {
+          "forward_to_conversation": "Передавать входящие сообщения голосовому ассистенту",
+          "conversation_agent": "ID агента ассистента (пусто = по умолчанию)",
+          "reply_with_agent_response": "Отвечать отправителю ответом ассистента",
+          "allowed_senders": "Разрешённые отправители (ID через запятую; пусто = все)"
+        },
+        "data_description": {
+          "conversation_agent": "Найти можно в Настройки → Голосовые ассистенты. Например: conversation.openai. Оставьте пустым, чтобы использовать конвейер Assist по умолчанию.",
+          "allowed_senders": "Например: 1234567890@c.us, 9876543210@c.us"
+        }
+      }
+    }
+  },
+  "services": {
+    "send_message": {
+      "name": "Отправить сообщение в WhatsApp",
+      "description": "Отправить текстовое сообщение через WAHA.",
+      "fields": {
+        "chat_id": {
+          "name": "ID чата",
+          "description": "ID получателя (например, 1234567890@c.us для контакта или ...@g.us для группы)."
+        },
+        "text": {
+          "name": "Текст",
+          "description": "Тело сообщения."
+        },
+        "session": {
+          "name": "Сессия WAHA",
+          "description": "Опциональное имя сессии WAHA."
+        }
+      }
+    }
+  }
+}

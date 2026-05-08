@@ -38,7 +38,7 @@ README.md                # user-facing docs
 - **Code style:** target HA core conventions — `from __future__ import annotations`, type hints, `_LOGGER = logging.getLogger(__name__)`, async everywhere. Match the patterns already in `custom_components/waha/__init__.py`.
 - **Minimum HA version is 2024.12** (set in `hacs.json`). The options flow uses the modern pattern (no `self.config_entry = ...` assignment — provided by the base class). Don't reintroduce the old pattern.
 - **Don't add a `notify` platform** unless explicitly asked. Outbound is intentionally a service (`waha.send_message`) — simpler, gives the user full control, and avoids the legacy/NotifyEntity migration tax.
-- **Strings + translations stay in sync.** When editing `strings.json`, mirror changes into `translations/en.json`. HA loads translations from the latter.
+- **Strings + translations stay in sync.** When editing `strings.json`, mirror changes into every file under `translations/` (currently `en.json`, `ru.json`). HA loads translations from `translations/{lang}.json` based on the user's HA profile language. Keep brand names ("WAHA", "WhatsApp", "Home Assistant") untranslated.
 - **Webhook payload assumptions:** code assumes the WAHA payload shape `{ event, session, payload: { from, body, fromMe, ... } }`. If WAHA's webhook format changes or the user enables a different event family, update `_make_webhook_handler` accordingly.
 
 ## Working with Home Assistant tooling
