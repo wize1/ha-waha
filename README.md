@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./icon.svg" alt="WAHA integration icon" width="128" height="128" />
+</p>
+
 # WAHA — WhatsApp HTTP API integration for Home Assistant
 
 A custom Home Assistant integration that bridges [WAHA](https://waha.devlike.pro/) (a self-hosted WhatsApp HTTP API) with Home Assistant.
