@@ -1,0 +1,61 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "WAHA (WhatsApp HTTP API)",
+        "description": "Connect to your self-hosted WAHA server. After saving, point WAHA's webhook at the URL shown on the integration's overview page.",
+        "data": {
+          "base_url": "WAHA base URL",
+          "api_key": "API key (X-Api-Key)",
+          "session": "WAHA session name"
+        },
+        "data_description": {
+          "base_url": "Example: http://localhost:3000 — no trailing slash needed.",
+          "api_key": "Required if your WAHA instance has WHATSAPP_API_KEY set.",
+          "session": "Defaults to 'default'. Must match the session you started in WAHA."
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "This WAHA base URL + session is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "WAHA — inbound message options",
+        "description": "Control how incoming WhatsApp messages are handled. Every message always fires the `waha_message_received` event, regardless of these settings.",
+        "data": {
+          "forward_to_conversation": "Forward incoming messages to a conversation agent",
+          "conversation_agent": "Conversation agent ID (blank = HA default)",
+          "reply_with_agent_response": "Reply to the sender with the agent's response",
+          "allowed_senders": "Allowed senders (comma-separated chat IDs; blank = allow all)"
+        },
+        "data_description": {
+          "conversation_agent": "Find this in Settings → Voice assistants. Example: conversation.openai or leave blank for the default Assist pipeline.",
+          "allowed_senders": "Example: 1234567890@c.us, 9876543210@c.us"
+        }
+      }
+    }
+  },
+  "services": {
+    "send_message": {
+      "name": "Send WhatsApp message",
+      "description": "Send a WhatsApp text message via WAHA.",
+      "fields": {
+        "chat_id": {
+          "name": "Chat ID",
+          "description": "Target chat ID (e.g., 1234567890@c.us)."
+        },
+        "text": {
+          "name": "Text",
+          "description": "Message body to send."
+        },
+        "session": {
+          "name": "WAHA session",
+          "description": "Optional WAHA session name."
+        }
+      }
+    }
+  }
+}

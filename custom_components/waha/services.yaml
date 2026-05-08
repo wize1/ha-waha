@@ -1,0 +1,26 @@
+send_message:
+  name: Send WhatsApp message
+  description: Send a WhatsApp text message via WAHA.
+  fields:
+    chat_id:
+      name: Chat ID
+      description: "Target chat ID (e.g., 1234567890@c.us for an individual or 1234567890-1600000000@g.us for a group)."
+      required: true
+      example: "1234567890@c.us"
+      selector:
+        text:
+    text:
+      name: Text
+      description: Message body to send.
+      required: true
+      example: "Hello from Home Assistant"
+      selector:
+        text:
+          multiline: true
+    session:
+      name: WAHA session
+      description: "Optional WAHA session name. Only needed if multiple WAHA config entries are set up."
+      required: false
+      example: default
+      selector:
+        text:

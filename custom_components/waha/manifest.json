@@ -1,0 +1,13 @@
+{
+  "domain": "waha",
+  "name": "WAHA (WhatsApp HTTP API)",
+  "version": "0.1.0",
+  "documentation": "https://github.com/wize1/ha-waha",
+  "issue_tracker": "https://github.com/wize1/ha-waha/issues",
+  "codeowners": ["@wize1"],
+  "config_flow": true,
+  "iot_class": "cloud_push",
+  "integration_type": "service",
+  "dependencies": ["webhook", "conversation"],
+  "requirements": []
+}

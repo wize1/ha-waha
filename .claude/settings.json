@@ -1,0 +1,12 @@
+{
+	"permissions": {
+		"allow": [
+			"WebFetch(domain:api.iot.decast.com)",
+			"mcp__home-assistant__ha_get_overview",
+			"Bash(gh auth *)",
+			"Bash(git *)",
+			"PowerShell(gh *)",
+			"mcp__home-assistant__ha_*"
+		]
+	}
+}
